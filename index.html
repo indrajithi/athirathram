@@ -140,9 +140,85 @@
             writing-mode: vertical-rl;
             text-orientation: mixed;
         }
+
+        /* ── Scroll Progress Bar ── */
+        #scroll-progress {
+            position: fixed; top: 0; left: 0;
+            height: 3px; width: 0%;
+            background: linear-gradient(90deg, #FFB692, #E9C349, #FF7722);
+            z-index: 99999;
+            box-shadow: 0 0 14px rgba(255,182,146,0.8);
+            transition: width 60ms linear;
+        }
+
+        /* ── Reveal on scroll ── */
+        .will-reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.85s cubic-bezier(0.16,1,0.3,1),
+                        transform 0.85s cubic-bezier(0.16,1,0.3,1);
+        }
+        .will-reveal.revealed { opacity: 1; transform: translateY(0); }
+
+        .will-reveal-left {
+            opacity: 0; transform: translateX(-50px);
+            transition: opacity 0.85s cubic-bezier(0.16,1,0.3,1),
+                        transform 0.85s cubic-bezier(0.16,1,0.3,1);
+        }
+        .will-reveal-left.revealed { opacity: 1; transform: translateX(0); }
+
+        .will-reveal-right {
+            opacity: 0; transform: translateX(50px);
+            transition: opacity 0.85s cubic-bezier(0.16,1,0.3,1),
+                        transform 0.85s cubic-bezier(0.16,1,0.3,1);
+        }
+        .will-reveal-right.revealed { opacity: 1; transform: translateX(0); }
+
+        /* Stagger delay helpers */
+        .delay-100 { transition-delay: 0.1s; }
+        .delay-200 { transition-delay: 0.2s; }
+        .delay-300 { transition-delay: 0.3s; }
+        .delay-400 { transition-delay: 0.4s; }
+        .delay-500 { transition-delay: 0.5s; }
+
+        /* ── Scroll-spy nav active ── */
+        .nav-spy-active {
+            color: #FFB692 !important;
+            border-bottom: 2px solid #E9C349;
+            padding-bottom: 4px;
+        }
+
+        /* ── Ember canvas ── */
+        #ember-canvas {
+            position: absolute; inset: 0;
+            pointer-events: none; z-index: 6;
+        }
+
+        /* ── Parallax hero bg ── */
+        .hero-parallax { will-change: transform; }
+
+        /* ── Back to top button ── */
+        #back-to-top {
+            position: fixed; bottom: 96px; right: 24px;
+            width: 44px; height: 44px; z-index: 50;
+            background: rgba(19,19,19,0.85);
+            border: 1px solid rgba(233,195,73,0.3);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            opacity: 0; transform: translateY(12px);
+            transition: opacity 0.3s, transform 0.3s;
+            backdrop-filter: blur(8px);
+        }
+        #back-to-top.visible { opacity: 1; transform: translateY(0); }
+        #back-to-top:hover { border-color: #E9C349; background: rgba(233,195,73,0.1); }
     </style>
 </head>
 <body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<div id="scroll-progress"></div>
+<button id="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <span class="material-symbols-outlined text-[#E9C349] text-lg">arrow_upward</span>
+</button>
 <header class="sticky top-0 w-full z-50 bg-[#131313]/95 backdrop-blur-lg shadow-[0_4px_30px_rgba(255,119,34,0.05)]">
 <nav class="flex justify-between items-center px-6 md:px-10 py-4 md:py-6 max-w-screen-2xl mx-auto">
   <a href="index.html" class="text-lg md:text-2xl font-serif font-bold text-[#E9C349] tracking-widest hover:opacity-80 transition-opacity">Athirathram 2026</a>
@@ -171,11 +247,12 @@
 </header>
 <main>
 <!-- Hero Section -->
-<section class="relative h-screen min-h-[600px] md:min-h-[800px] flex items-center justify-center overflow-hidden">
+<section id="hero" class="relative h-screen min-h-[600px] md:min-h-[800px] flex items-center justify-center overflow-hidden">
 <div class="absolute inset-0 z-0">
 <div class="absolute inset-0 bg-gradient-to-b from-surface/20 via-surface/60 to-surface z-10"></div>
-<img class="w-full h-full object-cover" data-alt="dramatic cinematic low-angle shot of a sacred ritual fire with intense orange flames and sparks dancing in the night air" src="images/hero.jpg"/>
+<img class="w-full h-full object-cover hero-parallax" data-alt="dramatic cinematic low-angle shot of a sacred ritual fire with intense orange flames and sparks dancing in the night air" src="images/hero.jpg"/>
 </div>
+<canvas id="ember-canvas"></canvas>
 <div class="relative z-20 text-center max-w-5xl px-6">
 <span class="inline-block text-secondary font-body tracking-[0.4em] uppercase text-sm mb-6 opacity-0 animate-[fadeIn_1s_ease-out_forwards]">
                 Veda Mahamandiram, Kozhikode
@@ -202,9 +279,9 @@
 </div>
 </section>
 <!-- Overview Section -->
-<section class="py-12 md:py-24 px-4 md:px-12 max-w-7xl mx-auto">
+<section id="overview" class="py-12 md:py-24 px-4 md:px-12 max-w-7xl mx-auto">
 <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-<div class="md:col-span-7 p-6 md:p-12 bg-surface-container-low rounded-xl flex flex-col justify-center">
+<div class="md:col-span-7 p-6 md:p-12 bg-surface-container-low rounded-xl flex flex-col justify-center will-reveal will-reveal-left">
 <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl mb-5 md:mb-8 text-primary">Crossing the Night</h2>
 <p class="font-body text-lg text-on-surface-variant leading-relaxed mb-6">
                     Athirathram is a unique Soma Yajna that transcends the boundaries of standard rituals. Extending through 10 intense days and nights, it aligns the individual consciousness with the <strong>Rta</strong>—the cosmic rhythm.
@@ -213,20 +290,20 @@
                     This ancient technology of sound and fire is designed to purify the atmosphere, restore social harmony, and catalyze an expansion of creative faculties within the collective human mind.
                 </p>
 </div>
-<div class="md:col-span-5 relative min-h-[400px] overflow-hidden rounded-xl">
+<div class="md:col-span-5 relative min-h-[400px] overflow-hidden rounded-xl will-reveal will-reveal-right delay-200">
 <img class="absolute inset-0 w-full h-full object-cover transition-all duration-1000" src="images/crossing-the-night.png" alt="Priests performing the sacred Athirathram yajna around the ritual fire at night"/>
 </div>
-<div class="md:col-span-4 bg-surface-container p-10 rounded-xl group hover:bg-surface-container-high transition-colors">
+<div class="md:col-span-4 bg-surface-container p-10 rounded-xl group hover:bg-surface-container-high transition-colors will-reveal delay-100">
 <span class="material-symbols-outlined text-secondary text-5xl mb-6" data-weight="fill">star_half</span>
 <h3 class="font-serif text-2xl mb-4 text-on-surface">Cosmic Rhythm</h3>
 <p class="text-on-surface-variant/80">Realigning planetary energies and ecological balances through precise Vedic chanting.</p>
 </div>
-<div class="md:col-span-4 bg-primary-container/10 p-10 rounded-xl group hover:bg-primary-container/20 transition-colors">
+<div class="md:col-span-4 bg-primary-container/10 p-10 rounded-xl group hover:bg-primary-container/20 transition-colors will-reveal delay-200">
 <span class="material-symbols-outlined text-primary text-5xl mb-6" data-weight="fill">groups</span>
 <h3 class="font-serif text-2xl mb-4 text-on-surface">Social Harmony</h3>
 <p class="text-on-surface-variant/80">Uniting humanity across barriers in a shared vibration of peace and spiritual elevation.</p>
 </div>
-<div class="md:col-span-4 bg-surface-container p-10 rounded-xl group hover:bg-surface-container-high transition-colors">
+<div class="md:col-span-4 bg-surface-container p-10 rounded-xl group hover:bg-surface-container-high transition-colors will-reveal delay-300">
 <span class="material-symbols-outlined text-secondary text-5xl mb-6" data-weight="fill">psychology</span>
 <h3 class="font-serif text-2xl mb-4 text-on-surface">Spiritual Expansion</h3>
 <p class="text-on-surface-variant/80">Opening new neurological pathways through the immersion in specific Sanskrit frequencies.</p>
@@ -234,16 +311,16 @@
 </div>
 </section>
 <!-- The Modern Rishi Section -->
-<section class="bg-surface-container-low py-16 md:py-32 overflow-hidden">
+<section id="visionary" class="bg-surface-container-low py-16 md:py-32 overflow-hidden">
 <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-20 items-center">
-<div class="relative">
+<div class="relative will-reveal will-reveal-left">
 <div class="absolute -top-10 -left-10 w-64 h-64 bg-secondary/5 rounded-full blur-3xl"></div>
 <img class="rounded-xl shadow-2xl relative z-10 w-full aspect-[4/5] object-cover" alt="Acharyasri Rajesh" src="images/acharya-library.png"/>
 <div class="absolute -bottom-6 -right-6 bg-secondary text-on-secondary-container px-10 py-6 font-serif text-xl rounded-lg z-20">
                     Acharyasri Rajesh
                 </div>
 </div>
-<div>
+<div class="will-reveal will-reveal-right delay-200">
 <span class="text-secondary font-label tracking-widest uppercase text-sm mb-4 block">Our Visionary</span>
 <h2 class="font-serif text-3xl md:text-5xl lg:text-6xl mb-5 md:mb-8 leading-tight">The Modern Rishi</h2>
 <p class="text-base md:text-xl text-on-surface-variant leading-relaxed mb-6 md:mb-8">
@@ -273,7 +350,7 @@
 <!-- Background Elements -->
 <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/5 to-transparent pointer-events-none"></div>
 <div class="max-w-7xl mx-auto px-6 md:px-12">
-<header class="mb-16">
+<header class="mb-16 will-reveal">
 <span class="text-primary font-label tracking-[0.4em] uppercase text-xs mb-4 block">Chronicles of the Infinite</span>
 <h2 class="font-serif text-3xl md:text-5xl lg:text-7xl mb-4 md:mb-6 text-glow">The Ritual Explorer</h2>
 <p class="text-on-surface-variant text-base md:text-xl max-w-2xl leading-relaxed">
@@ -357,7 +434,7 @@
 
 <!-- Ten Days of Transcendence Grid -->
 <div class="mt-20 md:mt-32">
-<div class="flex flex-col md:flex-row justify-between items-end mb-8 md:mb-16 gap-5 md:gap-8">
+<div class="flex flex-col md:flex-row justify-between items-end mb-8 md:mb-16 gap-5 md:gap-8 will-reveal">
   <div>
     <h2 class="font-serif text-2xl md:text-4xl mb-3 md:mb-4">Ten Days of Transcendence</h2>
     <p class="text-on-surface-variant font-body italic text-sm md:text-base">Click on each phase to reveal the spiritual significance of the daily rites.</p>
@@ -427,9 +504,9 @@
 
 <!-- How to Participate -->
 <div class="mt-20 md:mt-32 text-center">
-  <h2 class="font-serif text-3xl md:text-5xl mb-8 md:mb-12">How to Participate</h2>
+  <h2 class="font-serif text-3xl md:text-5xl mb-8 md:mb-12 will-reveal">How to Participate</h2>
   <div class="grid md:grid-cols-3 gap-6 md:gap-12 max-w-5xl mx-auto">
-    <div class="p-6 md:p-8 space-y-4 bg-surface-container-highest/20 rounded-xl">
+    <div class="p-6 md:p-8 space-y-4 bg-surface-container-highest/20 rounded-xl will-reveal delay-100">
       <span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings:'FILL' 1">location_on</span>
       <h4 class="font-bold tracking-widest uppercase">On Site</h4>
       <p class="text-sm text-on-surface/60">Veda Mahamandiram, Kakkodi, Kozhikode, Kerala.<br/>The sacred grounds of the 2026 Athirathram.</p>
@@ -463,7 +540,7 @@
 
 <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
   <!-- Heading -->
-  <div class="mb-14">
+  <div class="mb-14 will-reveal">
     <span class="inline-block py-1 px-4 border border-[#E9C349]/30 bg-[#E9C349]/10 text-[#E9C349] text-sm font-label tracking-[0.2em] uppercase mb-4">Sacred Grounds</span>
     <h2 class="font-serif text-2xl md:text-4xl lg:text-6xl font-bold text-[#E5E2E1]">Find <span class="text-[#FFB692]">the Venue</span></h2>
   </div>
@@ -548,7 +625,7 @@
 <div class="absolute inset-0 opacity-5 mix-blend-overlay">
 <img class="w-full h-full object-cover" data-alt="subtle watermark pattern of ancient geometric mandalas and vedic symbols over a dark textured background" src="images/image_4.jpg"/>
 </div>
-<div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+<div class="max-w-4xl mx-auto px-6 text-center relative z-10 will-reveal">
 <h2 class="font-serif text-3xl md:text-5xl mb-5 md:mb-8">Support the Sacred Cause</h2>
 <p class="text-base md:text-xl text-on-surface-variant mb-8 md:mb-12">
                 Athirathram 2026 is a massive undertaking made possible by the collective support of seekers worldwide. Contribute to the restoration of Vedic tradition.
@@ -745,5 +822,167 @@
             glow.style.transform = `translate(${x}px, ${y}px)`;
         });
     });
+
+    /* ── Auto-advance Ritual Explorer ── */
+    let explorerInterval = null;
+    let currentDay = 1;
+    const explorerSection = document.getElementById('ritual-explorer');
+
+    function startAutoAdvance() {
+        explorerInterval = setInterval(() => {
+            currentDay = (currentDay % 10) + 1;
+            selectDay(currentDay);
+        }, 5000);
+    }
+
+    function stopAutoAdvance() { clearInterval(explorerInterval); }
+
+    explorerSection.addEventListener('mouseenter', stopAutoAdvance);
+    explorerSection.addEventListener('mouseleave', startAutoAdvance);
+    explorerSection.addEventListener('click', () => {
+        stopAutoAdvance();
+        setTimeout(startAutoAdvance, 10000);
+    });
+
+    // Start auto-advance when explorer enters viewport
+    new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) startAutoAdvance();
+            else stopAutoAdvance();
+        });
+    }, { threshold: 0.3 }).observe(explorerSection);
+
+    /* ── Scroll Progress Bar ── */
+    const progressBar = document.getElementById('scroll-progress');
+    const backToTop = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+        const scrollTop = document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        progressBar.style.width = (scrollTop / scrollHeight * 100) + '%';
+
+        // Back to top visibility
+        if (scrollTop > 600) backToTop.classList.add('visible');
+        else backToTop.classList.remove('visible');
+
+        // Parallax hero
+        const heroImg = document.querySelector('.hero-parallax');
+        if (heroImg && scrollTop < window.innerHeight) {
+            heroImg.style.transform = `translateY(${scrollTop * 0.35}px)`;
+        }
+    }, { passive: true });
+
+    /* ── Scroll-triggered Reveals ── */
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.will-reveal, .will-reveal-left, .will-reveal-right').forEach(el => {
+        revealObserver.observe(el);
+    });
+
+    /* ── Scroll-spy Nav ── */
+    const spySections = [
+        { id: 'hero', href: 'index.html' },
+        { id: 'ritual-explorer', href: '#ritual-explorer' },
+        { id: 'location', href: '#location' },
+    ];
+    const desktopNavLinks = document.querySelectorAll('header nav .hidden.md\\:flex a');
+
+    const spyObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const sectionId = entry.target.id;
+            const match = spySections.find(s => s.id === sectionId);
+            if (!match) return;
+            desktopNavLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                link.classList.remove('nav-spy-active');
+                if (href === match.href || href === '#' + sectionId) {
+                    link.classList.add('nav-spy-active');
+                }
+            });
+        });
+    }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+
+    spySections.forEach(s => {
+        const el = document.getElementById(s.id);
+        if (el) spyObserver.observe(el);
+    });
+
+    /* ── Floating Ember Particles ── */
+    (function () {
+        const canvas = document.getElementById('ember-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let W, H, particles = [];
+
+        function resize() {
+            W = canvas.width = canvas.offsetWidth;
+            H = canvas.height = canvas.offsetHeight;
+        }
+        resize();
+        window.addEventListener('resize', resize);
+
+        function rand(min, max) { return Math.random() * (max - min) + min; }
+
+        function createParticle() {
+            return {
+                x: rand(0, W),
+                y: H + rand(0, 20),
+                vx: rand(-0.4, 0.4),
+                vy: rand(-0.6, -1.4),
+                size: rand(1, 2.5),
+                alpha: rand(0.4, 0.9),
+                decay: rand(0.003, 0.008),
+                color: Math.random() > 0.5 ? '#FFB692' : '#E9C349',
+            };
+        }
+
+        for (let i = 0; i < 40; i++) {
+            const p = createParticle();
+            p.y = rand(0, H); // distribute initially
+            particles.push(p);
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, W, H);
+            particles.forEach((p, i) => {
+                p.x += p.vx;
+                p.y += p.vy;
+                p.alpha -= p.decay;
+                if (p.alpha <= 0 || p.y < -10) {
+                    particles[i] = createParticle();
+                    return;
+                }
+                ctx.save();
+                ctx.globalAlpha = p.alpha;
+                ctx.fillStyle = p.color;
+                ctx.shadowBlur = 6;
+                ctx.shadowColor = p.color;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            });
+            // Occasionally spawn extra burst
+            if (Math.random() < 0.08 && particles.length < 60) particles.push(createParticle());
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        // Pause when hero scrolls out of view
+        let running = true;
+        new IntersectionObserver(([e]) => {
+            running = e.isIntersecting;
+            if (running) animate();
+        }).observe(canvas);
+    })();
+
 </script>
 </body></html>
