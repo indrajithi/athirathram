@@ -250,9 +250,9 @@
 <main>
 <!-- Hero Section -->
 <section id="hero" class="relative h-screen min-h-[600px] md:min-h-[800px] flex items-center justify-center overflow-hidden">
-<div class="absolute inset-0 z-0">
-<div class="absolute inset-0 bg-gradient-to-b from-surface/20 via-surface/60 to-surface z-10"></div>
-<img class="w-full h-full object-cover hero-parallax" data-alt="dramatic cinematic low-angle shot of a sacred ritual fire with intense orange flames and sparks dancing in the night air" src="images/hero.jpg"/>
+<div class="absolute inset-0 z-0 overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-b from-surface/10 via-surface/50 to-surface z-10"></div>
+<img class="absolute w-full object-cover hero-parallax" style="top:-15%;height:136%;object-position:center 40%;" data-alt="dramatic cinematic low-angle shot of a sacred ritual fire with intense orange flames and sparks dancing in the night air" src="images/hero.jpg"/>
 </div>
 <canvas id="ember-canvas"></canvas>
 <div class="relative z-20 text-center max-w-5xl px-6">
@@ -861,7 +861,7 @@
         if (scrollTop > 600) backToTop.classList.add('visible');
         else backToTop.classList.remove('visible');
 
-        if (heroImg && scrollTop < window.innerHeight) {
+        if (heroImg) {
             heroImg.style.transform = `translate3d(0,${-scrollTop * 0.18}px,0)`;
         }
 
