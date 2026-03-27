@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Athirathram 2026 | Sacred Vedic Yajna</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "on-primary-fixed-variant": "#793100",
+                "surface-dim": "#131313",
+                "tertiary": "#c9c6c0",
+                "surface-container-low": "#1c1b1b",
+                "outline": "#a78b7e",
+                "on-secondary": "#3c2f00",
+                "error": "#ffb4ab",
+                "on-primary": "#552000",
+                "primary": "#ffb692",
+                "tertiary-fixed": "#e5e2db",
+                "surface-bright": "#393939",
+                "secondary-fixed": "#ffe088",
+                "primary-container": "#ff7722",
+                "inverse-primary": "#9f4200",
+                "outline-variant": "#584237",
+                "on-background": "#e5e2e1",
+                "on-error": "#690005",
+                "primary-fixed": "#ffdbcb",
+                "inverse-on-surface": "#313030",
+                "surface-tint": "#ffb692",
+                "surface-variant": "#353535",
+                "on-surface-variant": "#e0c0b1",
+                "tertiary-container": "#a19f99",
+                "on-secondary-fixed-variant": "#574500",
+                "error-container": "#93000a",
+                "surface-container": "#20201f",
+                "surface": "#131313",
+                "on-error-container": "#ffdad6",
+                "tertiary-fixed-dim": "#c9c6c0",
+                "on-secondary-fixed": "#241a00",
+                "on-tertiary-fixed": "#1c1c18",
+                "on-secondary-container": "#342800",
+                "secondary-container": "#af8d11",
+                "surface-container-lowest": "#0e0e0e",
+                "secondary-fixed-dim": "#e9c349",
+                "on-primary-container": "#5e2400",
+                "surface-container-high": "#2a2a2a",
+                "on-tertiary-container": "#373632",
+                "on-primary-fixed": "#341100",
+                "inverse-surface": "#e5e2e1",
+                "surface-container-highest": "#353535",
+                "secondary": "#e9c349",
+                "on-tertiary": "#31312c",
+                "on-surface": "#e5e2e1",
+                "primary-fixed-dim": "#ffb692",
+                "background": "#131313",
+                "on-tertiary-fixed-variant": "#474742"
+              },
+              fontFamily: {
+                "headline": ["Noto Serif"],
+                "body": ["Manrope"],
+                "label": ["Manrope"]
+              },
+              borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+            },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; background-color: #131313; color: #E5E2E1; }
+        .font-serif { font-family: 'Noto Serif', serif; }
+        .glass-nav { background: rgba(19, 19, 19, 0.9); backdrop-filter: blur(12px); }
+        .sacred-glow { filter: drop-shadow(0 0 15px rgba(255, 182, 146, 0.3)); }
+        .text-glow { text-shadow: 0 0 20px rgba(233, 195, 73, 0.4); }
+        
+        /* Ritual Explorer Animations */
+        .explorer-card {
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .explorer-card:hover {
+            background: rgba(233, 195, 73, 0.05);
+            border-color: rgba(233, 195, 73, 0.4);
+            box-shadow: 0 0 20px rgba(233, 195, 73, 0.1);
+        }
+        .explorer-card.active {
+            background: rgba(255, 182, 146, 0.1);
+            border-color: #FFB692;
+            box-shadow: 0 0 40px rgba(255, 119, 34, 0.15);
+        }
+        
+        .prana-glow {
+            position: absolute;
+            background: radial-gradient(circle, rgba(233, 195, 73, 0.2) 0%, transparent 70%);
+            width: 150px;
+            height: 150px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .explorer-card:hover .prana-glow {
+            opacity: 1;
+        }
+
+        .energy-bar-fill {
+            transition: width 1.2s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(233, 195, 73, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(233, 195, 73, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(233, 195, 73, 0); }
+        }
+
+        .animate-pulse-gold {
+            animation: pulse-gold 2s infinite;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal-content {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<header class="sticky top-0 w-full z-50 bg-[#131313]/90 backdrop-blur-lg bg-gradient-to-b from-[#1C1B1B] to-transparent shadow-[0_4px_30px_rgba(255,119,34,0.05)] transition-all duration-500 ease-in-out">
+<nav class="flex justify-between items-center px-10 py-6 max-w-screen-2xl mx-auto">
+<div class="text-2xl font-serif font-bold text-[#E9C349] tracking-widest">
+            Athirathram 2026
+        </div>
+<div class="hidden md:flex items-center space-x-10 font-serif text-lg tracking-tight">
+<a class="text-[#FFB692] border-b-2 border-[#E9C349] pb-1" href="index.html">The Yajna</a>
+<a class="text-[#E5E2E1]/80 hover:text-[#FFB692] transition-all hover:drop-shadow-[0_0_8px_rgba(233,195,73,0.5)]" href="master.html">The Master</a>
+<a class="text-[#E5E2E1]/80 hover:text-[#FFB692] transition-all hover:drop-shadow-[0_0_8px_rgba(233,195,73,0.5)]" href="schedule.html">Schedule</a>
+<a class="text-[#E5E2E1]/80 hover:text-[#FFB692] transition-all hover:drop-shadow-[0_0_8px_rgba(233,195,73,0.5)]" href="#">Location</a>
+<a class="text-[#E5E2E1]/80 hover:text-[#FFB692] transition-all hover:drop-shadow-[0_0_8px_rgba(233,195,73,0.5)]" href="support.html">Support</a>
+</div>
+<a href="support.html" class="bg-gradient-to-br from-primary to-primary-container text-on-primary-fixed px-8 py-3 rounded-DEFAULT font-bold text-sm tracking-widest uppercase hover:scale-105 transition-transform">
+            Register/Donate
+        </a>
+</nav>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-b from-surface/20 via-surface/60 to-surface z-10"></div>
+<img class="w-full h-full object-cover" data-alt="dramatic cinematic low-angle shot of a sacred ritual fire with intense orange flames and sparks dancing in the night air" src="images/hero.jpg"/>
+</div>
+<div class="relative z-20 text-center max-w-5xl px-6">
+<span class="inline-block text-secondary font-body tracking-[0.4em] uppercase text-sm mb-6 opacity-0 animate-[fadeIn_1s_ease-out_forwards]">
+                Veda Mahamandiram, Kozhikode
+            </span>
+<h1 class="font-serif text-5xl md:text-8xl lg:text-9xl mb-8 leading-tight tracking-tighter text-glow">
+                The First-Ever <br/>
+<span class="text-primary italic">Athirathra</span> Mahayagam
+            </h1>
+<p class="font-body text-xl md:text-2xl text-on-surface-variant max-w-3xl mx-auto mb-12 leading-relaxed">
+                Witness the cosmic ritual of crossing the night. Envisioned by Acharyasri Rajesh.
+                <span class="block mt-4 font-bold text-secondary">April 17 - 26, 2026</span>
+</p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+<button class="w-full sm:w-auto px-12 py-5 bg-gradient-to-r from-primary to-primary-container text-on-primary-fixed font-bold text-lg rounded-DEFAULT hover:shadow-[0_0_30px_rgba(255,119,34,0.4)] transition-all">
+                    Witness the Sacred
+                </button>
+<button class="w-full sm:w-auto px-12 py-5 border-2 border-outline-variant/30 hover:border-secondary text-secondary font-bold text-lg rounded-DEFAULT transition-all">
+                    Register Now
+                </button>
+</div>
+</div>
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 animate-bounce">
+<span class="material-symbols-outlined text-outline-variant text-4xl">keyboard_double_arrow_down</span>
+</div>
+</section>
+<!-- Overview Section -->
+<section class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<div class="md:col-span-7 p-12 bg-surface-container-low rounded-xl flex flex-col justify-center">
+<h2 class="font-serif text-4xl md:text-5xl mb-8 text-primary">Crossing the Night</h2>
+<p class="font-body text-lg text-on-surface-variant leading-relaxed mb-6">
+                    Athirathram is a unique Soma Yajna that transcends the boundaries of standard rituals. Extending through 10 intense days and nights, it aligns the individual consciousness with the <strong>Rta</strong>—the cosmic rhythm.
+                </p>
+<p class="font-body text-lg text-on-surface-variant leading-relaxed">
+                    This ancient technology of sound and fire is designed to purify the atmosphere, restore social harmony, and catalyze an expansion of creative faculties within the collective human mind.
+                </p>
+</div>
+<div class="md:col-span-5 relative min-h-[400px] overflow-hidden rounded-xl">
+<img class="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" data-alt="abstract close up of golden vedic artifacts and sacred ritual vessels on a dark textured surface with warm candlelight" src="images/image_2.jpg"/>
+</div>
+<div class="md:col-span-4 bg-surface-container p-10 rounded-xl group hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-secondary text-5xl mb-6" data-weight="fill">star_half</span>
+<h3 class="font-serif text-2xl mb-4 text-on-surface">Cosmic Rhythm</h3>
+<p class="text-on-surface-variant/80">Realigning planetary energies and ecological balances through precise Vedic chanting.</p>
+</div>
+<div class="md:col-span-4 bg-primary-container/10 p-10 rounded-xl group hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-primary text-5xl mb-6" data-weight="fill">groups</span>
+<h3 class="font-serif text-2xl mb-4 text-on-surface">Social Harmony</h3>
+<p class="text-on-surface-variant/80">Uniting humanity across barriers in a shared vibration of peace and spiritual elevation.</p>
+</div>
+<div class="md:col-span-4 bg-surface-container p-10 rounded-xl group hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-secondary text-5xl mb-6" data-weight="fill">psychology</span>
+<h3 class="font-serif text-2xl mb-4 text-on-surface">Spiritual Expansion</h3>
+<p class="text-on-surface-variant/80">Opening new neurological pathways through the immersion in specific Sanskrit frequencies.</p>
+</div>
+</div>
+</section>
+<!-- The Modern Rishi Section -->
+<section class="bg-surface-container-low py-32 overflow-hidden">
+<div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<div class="relative">
+<div class="absolute -top-10 -left-10 w-64 h-64 bg-secondary/5 rounded-full blur-3xl"></div>
+<img class="rounded-xl shadow-2xl relative z-10 w-full aspect-[4/5] object-cover" data-alt="portrait of a serene spiritual leader in traditional white robes sitting in meditation with a blurred temple background" src="images/image_3.jpg"/>
+<div class="absolute -bottom-6 -right-6 bg-secondary text-on-secondary-container px-10 py-6 font-serif text-xl rounded-lg z-20">
+                    Acharyasri Rajesh
+                </div>
+</div>
+<div>
+<span class="text-secondary font-label tracking-widest uppercase text-sm mb-4 block">Our Visionary</span>
+<h2 class="font-serif text-5xl md:text-6xl mb-8 leading-tight">The Modern Rishi</h2>
+<p class="text-xl text-on-surface-variant leading-relaxed mb-8">
+                    Acharyasri Rajesh, the founder of Kasyapa Veda Research Foundation, has dedicated his life to the democratisation of Vedic knowledge. Breaking age-old taboos, he ensures the Vedas are accessible to all, regardless of caste, creed, or gender.
+                </p>
+<div class="space-y-6">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary mt-1">history_edu</span>
+<div>
+<h4 class="font-bold text-on-surface">Historical Milestone</h4>
+<p class="text-on-surface-variant">Spearheaded the 2014 Somayagam, which witnessed over 1.3 million participants in Kozhikode.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary mt-1">science</span>
+<div>
+<h4 class="font-bold text-on-surface">Vedic Research</h4>
+<p class="text-on-surface-variant">Leading scientific investigations into the environmental and physiological impacts of Yajnas.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- NEW Ritual Explorer Module -->
+<section class="py-32 bg-surface relative overflow-hidden" id="ritual-explorer">
+<!-- Background Elements -->
+<div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/5 to-transparent pointer-events-none"></div>
+<div class="max-w-7xl mx-auto px-6 md:px-12">
+<header class="mb-16">
+<span class="text-primary font-label tracking-[0.4em] uppercase text-xs mb-4 block">Chronicles of the Infinite</span>
+<h2 class="font-serif text-5xl md:text-7xl mb-6 text-glow">The Ritual Explorer</h2>
+<p class="text-on-surface-variant text-xl max-w-2xl leading-relaxed">
+                    A celestial journey across 10 days of profound spiritual technology. Select a phase to uncover the hidden geometries of the Yagam.
+                </p>
+</header>
+<div class="flex flex-col lg:flex-row gap-12 items-start">
+<!-- Day Selection Sidebar -->
+<div class="w-full lg:w-1/3 grid grid-cols-5 lg:grid-cols-1 gap-4 h-fit">
+<!-- Day Items JS Generated -->
+<div class="contents" id="day-tabs-container">
+<!-- Example tab -->
+<div class="explorer-card active relative cursor-pointer border border-outline-variant/30 rounded-lg p-4 flex flex-col items-center lg:items-start lg:flex-row lg:gap-6 overflow-hidden" id="tab-1" onclick="selectDay(1)">
+<div class="prana-glow"></div>
+<span class="font-serif text-2xl lg:text-3xl text-primary/50 group-hover:text-primary transition-colors">01</span>
+<div class="hidden lg:block">
+<h4 class="font-serif text-lg leading-tight">Sankalpam</h4>
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant/60">The Seed of Intent</span>
+</div>
+</div>
+<!-- ... rest generated via JS for cleaner code -->
+</div>
+</div>
+<!-- Expansion Panel -->
+<div class="w-full lg:w-2/3 min-h-[600px] relative">
+<div class="bg-surface-container-low/40 backdrop-blur-xl border border-outline-variant/20 rounded-xl p-8 md:p-12 shadow-2xl relative overflow-hidden h-full" id="details-panel">
+<!-- Content injected via JS -->
+<div class="flex flex-col h-full reveal-content" id="content-loader">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6">
+<div>
+<h3 class="font-serif text-4xl md:text-6xl text-primary mb-2" id="detail-title">The Commencement</h3>
+<p class="text-secondary font-label uppercase tracking-widest text-sm" id="detail-subtitle">Sacred Foundation Ceremony</p>
+</div>
+<div class="bg-surface-container-high px-6 py-4 rounded-lg text-center border border-outline-variant/10 shadow-inner">
+<span class="block text-[10px] uppercase tracking-[0.2em] text-on-surface-variant/60">Ritual Intensity</span>
+<span class="font-serif text-4xl text-primary" id="detail-day-num">Day 01</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+<div>
+<h4 class="font-bold text-on-surface mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">flare</span>
+                                        Ritual Significance
+                                    </h4>
+<p class="text-on-surface-variant leading-relaxed text-lg italic" id="detail-desc">
+                                        "The collective invocation where individual purpose dissolves into the cosmic sankalpa, preparing the ground for the descent of primordial grace."
+                                    </p>
+</div>
+<div class="space-y-8">
+<h4 class="font-bold text-on-surface mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">lists</span>
+                                        Detailed Rituals
+                                    </h4>
+<ul class="space-y-4" id="detail-list">
+<li class="flex items-center gap-4 text-sm">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_#ffb692]"></span>
+<span>Sankalpam &amp; Rtvik Varanam</span>
+</li>
+<li class="flex items-center gap-4 text-sm">
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+<span>Prathishta (Consecration)</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="mt-auto">
+<div class="flex justify-between items-end mb-4">
+<span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Prana Energy Accumulation</span>
+<span class="text-secondary font-mono text-xl" id="energy-val">15%</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden border border-outline-variant/10">
+<div class="energy-bar-fill h-full bg-gradient-to-r from-primary to-secondary shadow-[0_0_15px_#ff7722]" id="energy-bar" style="width: 15%"></div>
+</div>
+</div>
+</div>
+<!-- Background watermark symbol -->
+<span class="material-symbols-outlined absolute -bottom-10 -right-10 text-[20rem] text-primary/5 pointer-events-none select-none" id="bg-symbol">temple_hindu</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Donation Section -->
+<section class="py-32 bg-surface-container-highest relative overflow-hidden">
+<div class="absolute inset-0 opacity-5 mix-blend-overlay">
+<img class="w-full h-full object-cover" data-alt="subtle watermark pattern of ancient geometric mandalas and vedic symbols over a dark textured background" src="images/image_4.jpg"/>
+</div>
+<div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+<h2 class="font-serif text-5xl mb-8">Support the Sacred Cause</h2>
+<p class="text-xl text-on-surface-variant mb-12">
+                Athirathram 2026 is a massive undertaking made possible by the collective support of seekers worldwide. Contribute to the restoration of Vedic tradition.
+            </p>
+<div class="bg-surface p-10 rounded-xl shadow-2xl grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
+<div>
+<h4 class="font-bold text-secondary uppercase tracking-widest text-sm mb-6">Bank Transfer Details</h4>
+<div class="space-y-4 font-mono text-on-surface-variant">
+<p><span class="text-outline">Bank:</span> Axis Bank Ltd</p>
+<p><span class="text-outline">Account:</span> Kasyapa Veda Research Foundation</p>
+<p><span class="text-outline">A/C No:</span> 914010006248386</p>
+<p><span class="text-outline">IFSC:</span> UTIB0001007</p>
+<p><span class="text-outline">Branch:</span> Kozhikode Main</p>
+</div>
+</div>
+<div class="flex flex-col items-center justify-center border-l border-outline-variant/20 pl-0 md:pl-12">
+<div class="w-48 h-48 bg-white p-2 rounded-lg mb-4">
+<div class="w-full h-full bg-gradient-to-br from-black to-gray-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-6xl">qr_code_2</span>
+</div>
+</div>
+<p class="text-sm text-outline-variant font-bold uppercase tracking-tighter">Scan to Donate</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-[#1C1B1B] w-full pt-24 pb-12 tonal transition from surface to surface-container-low font-sans text-sm tracking-wide leading-relaxed">
+<div class="max-w-7xl mx-auto px-12 grid grid-cols-1 md:grid-cols-3 gap-16 text-center md:text-left">
+<div>
+<div class="text-xl font-serif text-[#FFB692] mb-6">Athirathram 2026</div>
+<p class="text-[#E5E2E1]/60 mb-8 max-w-xs mx-auto md:mx-0">
+                A global spiritual event dedicated to Universal Peace, Ecological Balance, and Individual Transcendence through Vedic Wisdom.
+            </p>
+<div class="flex justify-center md:justify-start gap-4">
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center hover:text-[#FFB692] transition-colors" href="#"><span class="material-symbols-outlined text-sm">public</span></a>
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center hover:text-[#FFB692] transition-colors" href="#"><span class="material-symbols-outlined text-sm">alternate_email</span></a>
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center hover:text-[#FFB692] transition-colors" href="#"><span class="material-symbols-outlined text-sm">share</span></a>
+</div>
+</div>
+<div class="space-y-4">
+<h4 class="text-[#E9C349] font-bold uppercase tracking-widest text-xs mb-6">Navigation</h4>
+<nav class="flex flex-col gap-3">
+<a class="text-[#FFB692] font-semibold hover:text-[#FFB692] transition-colors" href="index.html">The Yajna</a>
+<a class="text-[#E5E2E1]/60 hover:text-[#FFB692] transition-colors" href="master.html">The Master</a>
+<a class="text-[#E5E2E1]/60 hover:text-[#FFB692] transition-colors" href="schedule.html">Schedule</a>
+<a class="text-[#E5E2E1]/60 hover:text-[#FFB692] transition-colors" href="support.html">Support & Contribute</a>
+</nav>
+</div>
+<div>
+<h4 class="text-[#E9C349] font-bold uppercase tracking-widest text-xs mb-6">Headquarters</h4>
+<p class="text-[#E5E2E1]/60 leading-loose">
+                Kasyapa Veda Research Foundation<br/>
+                Veda Mahamandiram, Kakkodi,<br/>
+                Kozhikode, Keralam - 673611<br/>
+                India
+            </p>
+<button class="mt-8 flex items-center gap-2 text-[#FFB692] font-bold group">
+                Find on Map <span class="material-symbols-outlined transition-transform group-hover:translate-x-2">arrow_right_alt</span>
+</button>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-12 mt-24 pt-8 border-t border-outline-variant/10 text-center md:text-left">
+<p class="text-[#E5E2E1]/60 opacity-80 hover:opacity-100 transition-opacity">
+            © 2026 Kasyapa Veda Research Foundation. All Rights Sacred.
+        </p>
+</div>
+</footer>
+<div class="fixed bottom-10 right-10 z-50">
+<button class="bg-primary text-on-primary-fixed w-16 h-16 rounded-full shadow-[0_8px_32px_rgba(255,119,34,0.4)] flex items-center justify-center group hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl" data-weight="fill">volunteer_activism</span>
+<span class="absolute right-20 bg-surface-container px-4 py-2 rounded text-sm font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none border border-outline-variant/20">Support Yajna</span>
+</button>
+</div>
+<script>
+    const ritualData = [
+        {
+            day: 1, title: "The Commencement", subtitle: "Sankalpam", icon: "temple_hindu", energy: 15,
+            desc: "The collective invocation where individual purpose dissolves into the cosmic sankalpa, preparing the ground for the descent of primordial grace.",
+            list: ["Sankalpam & Rtvik Varanam", "Prathishta (Consecration)", "Ignition of the Sacred Aahavaniya Fire"]
+        },
+        {
+            day: 2, title: "Architectural Alchemy", subtitle: "Chayanam", icon: "architecture", energy: 25,
+            desc: "The geometric construction of the eagle-shaped altar, where each of the 10,800 bricks is a sonic representation of time and space.",
+            list: ["Shyena Chayana Initiation", "Laying of first layer (Prathama-chiti)", "Sama Veda sonic cleansing of materials"]
+        },
+        {
+            day: 3, title: "Soma Synthesis", subtitle: "Soma-Yaga", icon: "eco", energy: 38,
+            desc: "The procurement and ritual purification of the Soma plant, representing the lunar energies of the human mind.",
+            list: ["Soma-Krayana (Purchase)", "Adhithyeshti Offering", "Pravargya (The ceremony of Light)"]
+        },
+        {
+            day: 4, title: "The Golden Pitcher", subtitle: "Pravargya", icon: "local_fire_department", energy: 50,
+            desc: "Intense heat transformation rituals where the Ghee is boiled to high temperatures, symbolizing the purification of the intellect.",
+            list: ["Gharma Offering", "Upasads (The Siege Rituals)", "Mahavira Pot consecration"]
+        },
+        {
+            day: 5, title: "Entry to the Arena", subtitle: "Agni-Pranayana", icon: "directions_walk", energy: 62,
+            desc: "The grand procession where the sacred fire is carried into the newly constructed Mahavedi altar.",
+            list: ["Procession of the Priest", "Pranayana Chants", "Havirdhana Installation"]
+        },
+        {
+            day: 6, title: "Vedic Symphony", subtitle: "Vak-Shakti", icon: "audiotrack", energy: 75,
+            desc: "The peak of Sama Vedic chanting where 4000 melodic variations are performed to harmonize the global atmosphere.",
+            list: ["Stotra Chanting", "Sastra Recitation", "Sonic Healing Circle"]
+        },
+        {
+            day: 7, title: "Atmospheric Alchemies", subtitle: "Vayu-Shuddhi", icon: "air", energy: 82,
+            desc: "Specific oblations meant to interact with the atmospheric layers, promoting ecological restoration and rainfall patterns.",
+            list: ["Marut-vatiya Offerings", "Vayu-stuti Recitation", "Ecological Benediction"]
+        },
+        {
+            day: 8, title: "Collective Absorption", subtitle: "Dhyana", icon: "self_improvement", energy: 90,
+            desc: "A day of profound silence and deep meditation for the thousands gathered, absorbing the accumulated prana.",
+            list: ["Mauna (Sacred Silence)", "Universal Peace Meditation", "Vedic Science Symposium"]
+        },
+        {
+            day: 9, title: "Crossing the Night", subtitle: "Athirathram", icon: "nights_stay", energy: 98,
+            desc: "The ultimate 24-hour non-stop ritual that continues through the midnight hour, symbolizing the light of consciousness piercing the darkness of ignorance.",
+            list: ["Midnight Soma-Pressing", "Paryayas (Watch-chants)", "Final Crossing Ceremony"]
+        },
+        {
+            day: 10, title: "The Cosmic Blessing", subtitle: "Poornahuthi", icon: "sunny", energy: 100,
+            desc: "The final offering and the distribution of the sacred ash. A moment where the energy generated is radiated globally.",
+            list: ["Ultimate Oblation (Poornahuthi)", "Avabhritha (Sacred Bath)", "Prasadam Distribution"]
+        }
+    ];
+
+    function selectDay(dayNum) {
+        const data = ritualData.find(d => d.day === dayNum);
+        
+        // Update Tabs
+        document.querySelectorAll('.explorer-card').forEach(card => card.classList.remove('active'));
+        document.getElementById(`tab-${dayNum}`).classList.add('active');
+
+        // Animation transition
+        const panel = document.getElementById('details-panel');
+        const content = document.getElementById('content-loader');
+        
+        content.style.opacity = '0';
+        content.style.transform = 'translateY(10px)';
+
+        setTimeout(() => {
+            document.getElementById('detail-title').innerText = data.title;
+            document.getElementById('detail-subtitle').innerText = data.subtitle;
+            document.getElementById('detail-day-num').innerText = `Day ${dayNum.toString().padStart(2, '0')}`;
+            document.getElementById('detail-desc').innerText = `"${data.desc}"`;
+            document.getElementById('energy-val').innerText = `${data.energy}%`;
+            document.getElementById('energy-bar').style.width = `${data.energy}%`;
+            document.getElementById('bg-symbol').innerText = data.icon;
+
+            const listContainer = document.getElementById('detail-list');
+            listContainer.innerHTML = '';
+            data.list.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.className = 'flex items-center gap-4 text-sm reveal-content';
+                li.style.animationDelay = `${index * 0.1}s`;
+                li.innerHTML = `
+                    <span class="w-2 h-2 rounded-full ${index === 0 ? 'bg-primary animate-pulse shadow-[0_0_8px_#ffb692]' : 'bg-outline-variant'}"></span>
+                    <span>${item}</span>
+                `;
+                listContainer.appendChild(li);
+            });
+
+            content.style.opacity = '1';
+            content.style.transform = 'translateY(0)';
+        }, 300);
+    }
+
+    // Initialize Tabs
+    const container = document.getElementById('day-tabs-container');
+    container.innerHTML = ritualData.map(d => `
+        <div onclick="selectDay(${d.day})" id="tab-${d.day}" class="explorer-card group relative cursor-pointer border border-outline-variant/10 bg-surface-container-low/20 backdrop-blur-sm rounded-lg p-4 flex flex-col items-center lg:items-start lg:flex-row lg:gap-6 overflow-hidden">
+            <div class="prana-glow"></div>
+            <span class="font-serif text-2xl lg:text-3xl text-primary/30 group-hover:text-primary transition-colors">${d.day.toString().padStart(2, '0')}</span>
+            <div class="hidden lg:block">
+                <h4 class="font-serif text-lg leading-tight group-hover:text-secondary transition-colors">${d.subtitle}</h4>
+                <span class="text-[10px] uppercase tracking-widest text-on-surface-variant/40 group-hover:text-on-surface-variant transition-colors">Phase ${d.day}</span>
+            </div>
+        </div>
+    `).join('');
+
+    // Default select
+    selectDay(1);
+
+    // Track mouse for glow effect
+    document.addEventListener('mousemove', (e) => {
+        const glows = document.querySelectorAll('.prana-glow');
+        glows.forEach(glow => {
+            const rect = glow.parentElement.getBoundingClientRect();
+            const x = e.clientX - rect.left - 75;
+            const y = e.clientY - rect.top - 75;
+            glow.style.transform = `translate(${x}px, ${y}px)`;
+        });
+    });
+</script>
+</body></html>
