@@ -362,56 +362,56 @@
                     A celestial journey across 10 days of profound spiritual technology. Select a phase to uncover the hidden geometries of the Yagam.
                 </p>
 </header>
-<div class="flex flex-col lg:flex-row gap-12 items-start">
-<!-- Day Selection Sidebar (days 1–7) -->
-<div class="w-full lg:w-1/3 grid grid-cols-4 lg:grid-cols-1 gap-2 md:gap-4 h-fit" id="day-tabs-container">
+<div class="flex flex-col lg:flex-row gap-6 lg:gap-12 items-start">
+<!-- Day Selection Sidebar (days 1–7 on desktop; all 10 on mobile) -->
+<div class="w-full lg:w-1/3 grid grid-cols-5 lg:grid-cols-1 gap-2 h-fit" id="day-tabs-container">
 </div>
 <!-- Expansion Panel -->
-<div class="w-full lg:w-2/3 min-h-[400px] md:min-h-[600px] relative">
-<div class="bg-surface-container-low/40 backdrop-blur-xl border border-outline-variant/20 rounded-xl p-5 md:p-12 shadow-2xl relative overflow-hidden h-full" id="details-panel">
+<div class="w-full lg:w-2/3 md:min-h-[600px] relative">
+<div class="bg-surface-container-low/40 backdrop-blur-xl border border-outline-variant/20 rounded-xl p-4 md:p-12 shadow-2xl relative overflow-hidden h-full" id="details-panel">
 <!-- Content injected via JS -->
 <div class="flex flex-col h-full reveal-content" id="content-loader">
-<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-12 gap-4 md:gap-6">
+<div class="flex flex-row justify-between items-start mb-3 md:mb-12 gap-3 md:gap-6">
 <div>
-<h3 class="font-serif text-2xl md:text-4xl lg:text-6xl text-primary mb-2" id="detail-title">The Commencement</h3>
-<p class="text-secondary font-label uppercase tracking-widest text-sm" id="detail-subtitle">Sacred Foundation Ceremony</p>
+<h3 class="font-serif text-xl md:text-4xl lg:text-6xl text-primary mb-1 md:mb-2" id="detail-title">The Commencement</h3>
+<p class="text-secondary font-label uppercase tracking-widest text-xs md:text-sm" id="detail-subtitle">Sacred Foundation Ceremony</p>
 </div>
-<div class="bg-surface-container-high px-6 py-4 rounded-lg text-center border border-outline-variant/10 shadow-inner">
+<div class="bg-surface-container-high px-3 py-2 md:px-6 md:py-4 rounded-lg text-center border border-outline-variant/10 shadow-inner shrink-0">
 <span class="block text-[10px] uppercase tracking-[0.2em] text-on-surface-variant/60">Ritual Intensity</span>
-<span class="font-serif text-4xl text-primary" id="detail-day-num">Day 01</span>
+<span class="font-serif text-2xl md:text-4xl text-primary" id="detail-day-num">Day 01</span>
 </div>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12 mb-4 md:mb-12">
 <div>
-<h4 class="font-bold text-on-surface mb-6 flex items-center gap-2">
+<h4 class="font-bold text-on-surface mb-2 md:mb-6 flex items-center gap-2 text-sm md:text-base">
 <span class="material-symbols-outlined text-primary text-sm">flare</span>
                                         Ritual Significance
                                     </h4>
-<p class="text-on-surface-variant leading-relaxed text-lg italic" id="detail-desc">
+<p class="text-on-surface-variant leading-relaxed text-sm md:text-lg italic" id="detail-desc">
                                         "The collective invocation where individual purpose dissolves into the cosmic sankalpa, preparing the ground for the descent of primordial grace."
                                     </p>
 </div>
-<div class="space-y-8">
-<h4 class="font-bold text-on-surface mb-6 flex items-center gap-2">
+<div>
+<h4 class="font-bold text-on-surface mb-2 md:mb-6 flex items-center gap-2 text-sm md:text-base">
 <span class="material-symbols-outlined text-primary text-sm">lists</span>
                                         Detailed Rituals
                                     </h4>
-<ul class="space-y-4" id="detail-list">
-<li class="flex items-center gap-4 text-sm">
-<span class="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_#ffb692]"></span>
+<ul class="space-y-2 md:space-y-4" id="detail-list">
+<li class="flex items-center gap-3 text-sm">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_#ffb692] shrink-0"></span>
 <span>Sankalpam &amp; Rtvik Varanam</span>
 </li>
-<li class="flex items-center gap-4 text-sm">
-<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+<li class="flex items-center gap-3 text-sm">
+<span class="w-2 h-2 rounded-full bg-outline-variant shrink-0"></span>
 <span>Prathishta (Consecration)</span>
 </li>
 </ul>
 </div>
 </div>
-<div class="mt-auto">
-<div class="flex justify-between items-end mb-4">
+<div class="mt-auto pt-2 md:pt-0">
+<div class="flex justify-between items-end mb-2 md:mb-4">
 <span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Prana Energy Accumulation</span>
-<span class="text-secondary font-mono text-xl" id="energy-val">15%</span>
+<span class="text-secondary font-mono text-base md:text-xl" id="energy-val">15%</span>
 </div>
 <div class="w-full h-2 bg-surface-container rounded-full overflow-hidden border border-outline-variant/10">
 <div class="energy-bar-fill h-full bg-gradient-to-r from-primary to-secondary shadow-[0_0_15px_#ff7722]" id="energy-bar" style="width: 15%"></div>
@@ -423,8 +423,8 @@
 </div>
 </div>
 </div>
-<!-- Days 8–10 row below the card -->
-<div class="grid grid-cols-3 gap-2 md:gap-4 mt-4" id="day-tabs-bottom"></div>
+<!-- Days 8–10 row below the card (large screens only) -->
+<div class="hidden lg:grid grid-cols-3 gap-4 mt-4" id="day-tabs-bottom"></div>
 
 <!-- Ten Days of Transcendence Grid -->
 <div class="mt-20 md:mt-32">
@@ -750,7 +750,8 @@
         
         // Update Tabs
         document.querySelectorAll('.explorer-card').forEach(card => card.classList.remove('active'));
-        document.getElementById(`tab-${dayNum}`).classList.add('active');
+        document.getElementById(`tab-${dayNum}`)?.classList.add('active');
+        document.getElementById(`tab-b-${dayNum}`)?.classList.add('active');
 
         // Animation transition
         const panel = document.getElementById('details-panel');
@@ -786,11 +787,11 @@
         }, 300);
     }
 
-    // Initialize Tabs — days 1–7 in sidebar, 8–10 below card
-    function tabHTML(d) {
-        return `<div onclick="selectDay(${d.day})" id="tab-${d.day}" class="explorer-card group relative cursor-pointer border border-outline-variant/10 bg-surface-container-low/20 backdrop-blur-sm rounded-lg p-4 flex flex-col items-center lg:items-start lg:flex-row lg:gap-6 overflow-hidden">
+    // Initialize Tabs — all 10 in sidebar on mobile; 1–7 in sidebar + 8–10 below card on desktop
+    function tabHTML(d, id, extraClass = '') {
+        return `<div onclick="selectDay(${d.day})" id="${id}" class="explorer-card group relative cursor-pointer border border-outline-variant/10 bg-surface-container-low/20 backdrop-blur-sm rounded-lg p-2 lg:p-4 flex flex-col items-center lg:items-start lg:flex-row lg:gap-6 overflow-hidden ${extraClass}">
             <div class="prana-glow"></div>
-            <span class="font-serif text-2xl lg:text-3xl text-primary/30 group-hover:text-primary transition-colors">${d.day.toString().padStart(2, '0')}</span>
+            <span class="font-serif text-xl lg:text-3xl text-primary/30 group-hover:text-primary transition-colors">${d.day.toString().padStart(2, '0')}</span>
             <div class="hidden lg:block">
                 <h4 class="font-serif text-lg leading-tight group-hover:text-secondary transition-colors">${d.subtitle}</h4>
                 <span class="text-[10px] uppercase tracking-widest text-on-surface-variant/40 group-hover:text-on-surface-variant transition-colors">Phase ${d.day}</span>
@@ -798,9 +799,12 @@
         </div>`;
     }
     const container = document.getElementById('day-tabs-container');
-    container.innerHTML = ritualData.filter(d => d.day <= 7).map(tabHTML).join('');
+    // Days 1-7 always visible in sidebar; days 8-10 visible on mobile only (lg:hidden)
+    container.innerHTML = ritualData.filter(d => d.day <= 7).map(d => tabHTML(d, `tab-${d.day}`)).join('')
+        + ritualData.filter(d => d.day > 7).map(d => tabHTML(d, `tab-${d.day}`, 'lg:hidden')).join('');
     const bottomContainer = document.getElementById('day-tabs-bottom');
-    bottomContainer.innerHTML = ritualData.filter(d => d.day > 7).map(tabHTML).join('');
+    // Days 8-10 in bottom row on desktop with separate IDs to avoid duplicate
+    bottomContainer.innerHTML = ritualData.filter(d => d.day > 7).map(d => tabHTML(d, `tab-b-${d.day}`)).join('');
 
     // Default select
     selectDay(1);
@@ -916,12 +920,12 @@
         if (el) spyObserver.observe(el);
     });
 
-    /* ── Floating Ember Particles ── */
+    /* ── Fire & Ember System ── */
     (function () {
         const canvas = document.getElementById('ember-canvas');
         if (!canvas) return;
         const ctx = canvas.getContext('2d');
-        let W, H, particles = [], rafId = null, running = false;
+        let W, H, flames = [], embers = [], rafId = null, running = false;
 
         function resize() {
             W = canvas.width = canvas.offsetWidth;
@@ -930,24 +934,89 @@
         resize();
         window.addEventListener('resize', resize);
 
-        function rand(a, b) { return Math.random() * (b - a) + a; }
+        const rand = (a, b) => Math.random() * (b - a) + a;
 
-        function spawn(randomY) {
-            const big = Math.random() < 0.18;
+        // Flame tongue — rises from bottom-center band
+        function spawnFlame(randomY) {
             return {
-                x: rand(0, W),
+                x: W * 0.5 + rand(-W * 0.22, W * 0.22),
+                y: randomY ? rand(H * 0.55, H + 10) : H + rand(0, 25),
+                vx: rand(-0.25, 0.25),
+                vy: rand(-1.6, -3.2),
+                w: rand(10, 36),       // half-width of flame base
+                h: rand(45, 130),      // height of flame tongue
+                alpha: rand(0.55, 1.0),
+                decay: rand(0.007, 0.018),
+                type: Math.floor(Math.random() * 3), // 0=yellow, 1=orange, 2=red-orange
+                drift: rand(0, Math.PI * 2),
+                driftAmp: rand(0.25, 0.7),
+            };
+        }
+
+        // Ember spark — flies off from fire, wider spread
+        function spawnEmber(randomY) {
+            return {
+                x: randomY ? rand(0, W) : W * 0.5 + rand(-W * 0.3, W * 0.3),
                 y: randomY ? rand(0, H) : H + rand(0, 20),
-                vx: rand(-0.15, 0.15),
-                vy: rand(-0.3, -0.7),
-                size: big ? rand(2.8, 5) : rand(1, 2.8),
-                alpha: rand(0.6, 1.0),
-                decay: rand(0.001, 0.004),
-                color: ['#FFB692','#E9C349','#FF7722','#FFCC88'][Math.floor(Math.random() * 4)],
+                vx: rand(-0.6, 0.6),
+                vy: rand(-0.5, -1.6),
+                size: rand(0.8, 2.8),
+                alpha: rand(0.5, 1.0),
+                decay: rand(0.003, 0.008),
+                color: ['#FFD066','#FF9933','#FF5500','#FFCC88','#FFB692'][Math.floor(Math.random() * 5)],
                 drift: rand(0, Math.PI * 2),
             };
         }
 
-        for (let i = 0; i < 160; i++) particles.push(spawn(true));
+        for (let i = 0; i < 45; i++) flames.push(spawnFlame(true));
+        for (let i = 0; i < 110; i++) embers.push(spawnEmber(true));
+
+        // Three color layers per flame type: [outer, mid, core]
+        const FC = [
+            // yellow-white (brightest inner flames)
+            ['rgba(255,200,0,', 'rgba(255,230,80,', 'rgba(255,255,180,'],
+            // orange
+            ['rgba(220,60,0,',  'rgba(255,130,10,', 'rgba(255,210,60,'],
+            // red-orange (edge flames)
+            ['rgba(180,15,0,',  'rgba(240,55,0,',   'rgba(255,130,20,'],
+        ];
+
+        function drawFlame(f, t) {
+            const lean = Math.sin(t * 1.3 + f.drift) * f.driftAmp * f.w;
+            const tx = f.x + lean;   // tip x (leans with wind)
+            const bx = f.x;          // base x
+            const ty = f.y - f.h;    // tip y
+            const by = f.y;          // base y
+            const w = f.w, h = f.h, a = f.alpha;
+            const c = FC[f.type];
+
+            // Outer diffuse glow — wide teardrop
+            ctx.globalAlpha = a * 0.09;
+            ctx.fillStyle = c[0] + '1)';
+            ctx.beginPath();
+            ctx.moveTo(tx, ty - h * 0.04);
+            ctx.bezierCurveTo(bx + w * 2.4, by - h * 0.42, bx + w * 2.0, by, bx, by);
+            ctx.bezierCurveTo(bx - w * 2.0, by, bx - w * 2.4, by - h * 0.42, tx, ty - h * 0.04);
+            ctx.fill();
+
+            // Mid flame body
+            ctx.globalAlpha = a * 0.32;
+            ctx.fillStyle = c[1] + '1)';
+            ctx.beginPath();
+            ctx.moveTo(tx, ty);
+            ctx.bezierCurveTo(bx + w * 1.1, by - h * 0.38, bx + w * 0.95, by, bx, by);
+            ctx.bezierCurveTo(bx - w * 0.95, by, bx - w * 1.1, by - h * 0.38, tx, ty);
+            ctx.fill();
+
+            // Bright core — narrow inner tongue
+            ctx.globalAlpha = a * 0.72;
+            ctx.fillStyle = c[2] + '1)';
+            ctx.beginPath();
+            ctx.moveTo(tx, ty + h * 0.22);
+            ctx.bezierCurveTo(bx + w * 0.42, by - h * 0.18, bx + w * 0.32, by, bx, by);
+            ctx.bezierCurveTo(bx - w * 0.32, by, bx - w * 0.42, by - h * 0.18, tx, ty + h * 0.22);
+            ctx.fill();
+        }
 
         function loop() {
             if (!running) return;
@@ -956,22 +1025,42 @@
 
             ctx.globalCompositeOperation = 'lighter';
 
-            for (let i = 0; i < particles.length; i++) {
-                const p = particles[i];
-                p.x += p.vx + Math.sin(t * 0.55 + p.drift) * 0.14;
+            // Persistent heat glow at base — gives fire-pit look
+            const grd = ctx.createRadialGradient(W / 2, H, 0, W / 2, H, W * 0.38);
+            grd.addColorStop(0,   'rgba(255,110,20,0.32)');
+            grd.addColorStop(0.4, 'rgba(200,40,0,0.12)');
+            grd.addColorStop(1,   'rgba(0,0,0,0)');
+            ctx.globalAlpha = 1;
+            ctx.fillStyle = grd;
+            ctx.fillRect(0, H * 0.35, W, H * 0.65);
+
+            // Flame tongues
+            for (let i = 0; i < flames.length; i++) {
+                const f = flames[i];
+                f.x += f.vx;
+                f.y += f.vy;
+                f.alpha -= f.decay;
+                if (f.alpha <= 0 || f.y < 0) { flames[i] = spawnFlame(false); continue; }
+                drawFlame(f, t);
+            }
+
+            // Ember sparks
+            for (let i = 0; i < embers.length; i++) {
+                const p = embers[i];
+                p.x += p.vx + Math.sin(t * 0.6 + p.drift) * 0.22;
                 p.y += p.vy;
                 p.alpha -= p.decay;
-                if (p.alpha <= 0 || p.y < -10) { particles[i] = spawn(false); continue; }
+                if (p.alpha <= 0 || p.y < -10) { embers[i] = spawnEmber(false); continue; }
 
-                // Soft outer halo (cheap glow — no shadowBlur)
-                ctx.globalAlpha = p.alpha * 0.18;
+                // Outer halo
+                ctx.globalAlpha = p.alpha * 0.15;
                 ctx.fillStyle = p.color;
                 ctx.beginPath();
-                ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
+                ctx.arc(p.x, p.y, p.size * 3.5, 0, Math.PI * 2);
                 ctx.fill();
 
                 // Bright core
-                ctx.globalAlpha = p.alpha * 0.85;
+                ctx.globalAlpha = p.alpha * 0.9;
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
                 ctx.fill();
@@ -979,8 +1068,6 @@
 
             ctx.globalCompositeOperation = 'source-over';
             ctx.globalAlpha = 1;
-
-            if (particles.length < 180) particles.push(spawn(false));
             rafId = requestAnimationFrame(loop);
         }
 
