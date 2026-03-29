@@ -691,6 +691,11 @@
 </a>
 </div>
 <script>
+    // Declared early so selectDay() can reference currentDay on first call
+    let explorerInterval = null;
+    let explorerRestartTimer = null;
+    let currentDay = 1;
+
     const ritualData = [
         {
             day: 1, title: "The Commencement", subtitle: "Sankalpam", icon: "temple_hindu", energy: 15,
@@ -745,6 +750,7 @@
     ];
 
     function selectDay(dayNum) {
+        currentDay = dayNum;
         const data = ritualData.find(d => d.day === dayNum);
         
         // Update Tabs
@@ -788,7 +794,7 @@
 
     // Initialize Tabs — all 10 in sidebar on mobile; 1–7 in sidebar + 8–10 below card on desktop
     function tabHTML(d, id, extraClass = '') {
-        return `<div onclick="selectDay(${d.day})" id="${id}" class="explorer-card group relative cursor-pointer border border-outline-variant/10 bg-surface-container-low/20 backdrop-blur-sm rounded-lg p-2 lg:p-4 flex flex-col items-center lg:items-start lg:flex-row lg:gap-6 overflow-hidden ${extraClass}">
+        return `<div onclick="selectDay(${d.day}); pauseThenResume();" id="${id}" class="explorer-card group relative cursor-pointer border border-outline-variant/10 bg-surface-container-low/20 backdrop-blur-sm rounded-lg p-2 lg:p-4 flex flex-col items-center lg:items-start lg:flex-row lg:gap-6 overflow-hidden ${extraClass}">
             <div class="prana-glow"></div>
             <span class="font-serif text-xl lg:text-3xl text-primary/30 group-hover:text-primary transition-colors">${d.day.toString().padStart(2, '0')}</span>
             <div class="hidden lg:block">
@@ -820,25 +826,37 @@
     });
 
     /* ── Auto-advance Ritual Explorer ── */
-    let explorerInterval = null;
-    let currentDay = 1;
     const explorerSection = document.getElementById('ritual-explorer');
 
     function startAutoAdvance() {
+        clearInterval(explorerInterval);
         explorerInterval = setInterval(() => {
             currentDay = (currentDay % 10) + 1;
             selectDay(currentDay);
-        }, 5000);
+        }, 6000);
     }
 
-    function stopAutoAdvance() { clearInterval(explorerInterval); }
+    function stopAutoAdvance() {
+        clearInterval(explorerInterval);
+        explorerInterval = null;
+    }
 
-    explorerSection.addEventListener('mouseenter', stopAutoAdvance);
-    explorerSection.addEventListener('mouseleave', startAutoAdvance);
-    explorerSection.addEventListener('click', () => {
+    // Called on tab click: pause 10s then resume from the clicked day
+    function pauseThenResume() {
         stopAutoAdvance();
-        setTimeout(startAutoAdvance, 10000);
+        clearTimeout(explorerRestartTimer);
+        explorerRestartTimer = setTimeout(() => {
+            explorerRestartTimer = null;
+            startAutoAdvance();
+        }, 10000);
+    }
+
+    explorerSection.addEventListener('mouseenter', () => {
+        clearTimeout(explorerRestartTimer);
+        explorerRestartTimer = null;
+        stopAutoAdvance();
     });
+    explorerSection.addEventListener('mouseleave', startAutoAdvance);
 
     // Start auto-advance when explorer enters viewport
     new IntersectionObserver((entries) => {
