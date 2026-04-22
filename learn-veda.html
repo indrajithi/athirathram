@@ -163,10 +163,10 @@
     <!-- Left: brief copy -->
     <div class="flex-1 text-center md:text-left">
       <span class="font-label text-secondary tracking-[0.4em] uppercase text-xs mb-4 block fade-up">Ancient Wisdom. Living Tradition.</span>
-      <h1 class="font-headline text-4xl md:text-5xl lg:text-6xl text-on-background leading-tight mb-5 fade-up-2">
+      <h1 id="lv-hero-heading" class="font-headline text-4xl md:text-5xl lg:text-6xl text-on-background leading-tight mb-5 fade-up-2">
         Vedasree <span class="text-[#E9C349] italic">Patham</span> Program
       </h1>
-      <p class="font-body text-base md:text-lg text-on-surface-variant leading-relaxed fade-up-3 max-w-sm mx-auto md:mx-0">
+      <p id="lv-hero-desc" class="font-body text-base md:text-lg text-on-surface-variant leading-relaxed fade-up-3 max-w-sm mx-auto md:mx-0">
         Register your interest and our team will reach out to you about the programme.
       </p>
     </div>
@@ -179,10 +179,32 @@
     <div id="lv-form-wrap" class="bg-surface-container-low rounded-2xl p-6 md:p-10 border border-outline-variant/10">
       <div class="mb-6">
         <span class="font-label text-secondary tracking-[0.35em] uppercase text-xs mb-2 block">Register Your Interest</span>
-        <h2 class="font-headline text-3xl md:text-4xl text-on-background">Vedasree Patham Program</h2>
+        <h2 id="lv-form-title" class="font-headline text-3xl md:text-4xl text-on-background">Vedasree Patham Program</h2>
       </div>
 
       <form id="lv-form" class="space-y-5" novalidate>
+
+        <!-- Course selector -->
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-1.5" for="lv-course">
+            Course <span class="text-primary">*</span>
+          </label>
+          <select id="lv-course" class="input-field" required>
+            <optgroup label="Offline — In-Person">
+              <option value="vedasree-patham">Vedasree Patham Program</option>
+            </optgroup>
+            <optgroup label="Online — Kashyapa Veda Research Foundation">
+              <option value="sankhya-darshana">Sankhya Darshana Study</option>
+              <option value="ishavasyopanishad">Ishavasyopanishad Study</option>
+              <option value="brihad-agnihotra">Brihad Agnihotra Study</option>
+              <option value="vedasree-patham-online">Vedasree Patham</option>
+            </optgroup>
+          </select>
+          <p id="lv-course-badge" class="mt-1.5 text-xs text-on-surface-variant flex items-center gap-1.5">
+            <span id="lv-course-dot" class="inline-block w-1.5 h-1.5 rounded-full bg-outline-variant flex-shrink-0"></span>
+            <span id="lv-course-badge-text">Offline · In-Person · 6-Month Programme</span>
+          </p>
+        </div>
 
         <!-- Name -->
         <div>
@@ -288,7 +310,7 @@
         <span class="material-symbols-outlined text-[#E9C349] text-4xl" style="font-variation-settings:'FILL' 1">check_circle</span>
       </div>
       <h3 class="font-headline text-2xl md:text-3xl text-on-background mb-3">Registration Received</h3>
-      <p class="text-on-surface-variant leading-relaxed mb-8 max-w-md mx-auto">Thank you for your interest. Our team will reach out to you on your WhatsApp number to share details about the Vedasree Patham Program.</p>
+      <p id="lv-success-msg" class="text-on-surface-variant leading-relaxed mb-8 max-w-md mx-auto">Thank you for your interest. Our team will reach out to you on your WhatsApp number to share details about the Vedasree Patham Program.</p>
       <button onclick="resetForm()" class="inline-block border border-outline-variant text-on-surface px-8 py-3 rounded-lg font-semibold hover:bg-surface-variant transition-colors text-sm cursor-pointer">
         Submit Another Response
       </button>
@@ -341,19 +363,112 @@
 
 <script>
 (function () {
-  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwP7zQGO09Nubrvfzt6yPRfVFO1jZEUKcSTgiv-4e5J3Ja-1yYo_cUefZaZw4tE-uOJTw/exec';
+  const SHEET_URL = 'https://script.google.com/macros/s/AKfycby5ED8ZHmz2sZjFfhXkVBltpsTJLV7_o8EpIKHkdD9nSSqpqsJcXhTTYoIj7nFmtVJO8w/exec';
 
-  const form      = document.getElementById('lv-form');
-  const formWrap  = document.getElementById('lv-form-wrap');
-  const success   = document.getElementById('lv-success');
-  const submitBtn = document.getElementById('lv-submit');
-  const errorEl   = document.getElementById('lv-error');
+  // ── Course definitions ────────────────────────────────────────────────────
+  const COURSES = {
+    'vedasree-patham': {
+      label: 'Vedasree Patham Program',
+      mode: 'offline',
+      badge: 'Offline · In-Person · 6-Month Programme',
+      heroHTML: 'Vedasree <span class="text-[#E9C349] italic">Patham</span> Program',
+      heroDesc: 'Register your interest and our team will reach out to you about the programme.',
+      successMsg: 'Thank you for your interest. Our team will reach out to you on your WhatsApp number to share details about the Vedasree Patham Program.'
+    },
+    'sankhya-darshana': {
+      label: 'Sankhya Darshana Study',
+      mode: 'online',
+      badge: 'Online · Kashyapa Veda Research Foundation',
+      heroHTML: '<span class="text-[#E9C349] italic">Sankhya Darshana</span> Study',
+      heroDesc: 'The most ancient of Indian philosophies — register your interest and our team will reach out with details about this online programme.',
+      successMsg: 'Thank you for your interest in the Sankhya Darshana Study. Our team will reach out to you on your WhatsApp number with programme details.'
+    },
+    'ishavasyopanishad': {
+      label: 'Ishavasyopanishad Study',
+      mode: 'online',
+      badge: 'Online · Kashyapa Veda Research Foundation',
+      heroHTML: '<span class="text-[#E9C349] italic">Ishavasyopanishad</span> Study',
+      heroDesc: 'The most revered among the principal Upanishads, led directly by Acharyasri Rajesh — register your interest for this online programme.',
+      successMsg: 'Thank you for your interest in the Ishavasyopanishad Study. Our team will reach out to you on your WhatsApp number with programme details.'
+    },
+    'brihad-agnihotra': {
+      label: 'Brihad Agnihotra Study',
+      mode: 'online',
+      badge: 'Online · Kashyapa Veda Research Foundation',
+      heroHTML: 'Brihad <span class="text-[#E9C349] italic">Agnihotra</span> Study',
+      heroDesc: 'The expanded form of Agnihotra — foundation of Darsha-Paurnamasa Ishtis and Shodasha Samskara rituals. Register your interest for this online programme.',
+      successMsg: 'Thank you for your interest in the Brihad Agnihotra Study. Our team will reach out to you on your WhatsApp number with programme details.'
+    },
+    'vedasree-patham-online': {
+      label: 'Vedasree Patham — Online',
+      mode: 'online',
+      badge: 'Online · 6-Month Course · Kashyapa Veda Research Foundation',
+      heroHTML: 'Vedasree <span class="text-[#E9C349] italic">Patham</span> — Online',
+      heroDesc: 'Register your interest for the online edition of the Vedasree Patham programme and our team will reach out to you.',
+      successMsg: 'Thank you for your interest in Vedasree Patham (Online). Our team will reach out to you on your WhatsApp number with programme details.'
+    }
+  };
 
-  // WhatsApp — digits only
+  // ── DOM refs ──────────────────────────────────────────────────────────────
+  const form        = document.getElementById('lv-form');
+  const formWrap    = document.getElementById('lv-form-wrap');
+  const success     = document.getElementById('lv-success');
+  const submitBtn   = document.getElementById('lv-submit');
+  const errorEl     = document.getElementById('lv-error');
+  const courseEl    = document.getElementById('lv-course');
+  const badgeDot    = document.getElementById('lv-course-dot');
+  const badgeText   = document.getElementById('lv-course-badge-text');
+  const heroHeading = document.getElementById('lv-hero-heading');
+  const heroDesc    = document.getElementById('lv-hero-desc');
+  const formTitle   = document.getElementById('lv-form-title');
+  const successMsg  = document.getElementById('lv-success-msg');
+
+  // ── Apply course: update UI + URL ─────────────────────────────────────────
+  function applyCourse(key) {
+    const course = COURSES[key] || COURSES['vedasree-patham'];
+    const isOnline = course.mode === 'online';
+
+    // Hero
+    heroHeading.innerHTML = course.heroHTML;
+    heroDesc.textContent = course.heroDesc;
+
+    // Form card
+    formTitle.textContent = course.label;
+
+    // Badge dot colour
+    badgeDot.className = 'inline-block w-1.5 h-1.5 rounded-full flex-shrink-0 ' +
+      (isOnline ? 'bg-green-400' : 'bg-secondary');
+    badgeText.textContent = course.badge;
+
+    // Success message
+    successMsg.textContent = course.successMsg;
+
+    // Page title
+    document.title = course.label + ' | Athirathram 2026';
+
+    // URL — use base URL for the default offline course (preserves existing QR)
+    const newParam = (key === 'vedasree-patham') ? '' : '?course=' + key;
+    const newUrl = window.location.pathname + newParam;
+    history.replaceState(null, '', newUrl);
+  }
+
+  // ── Read course from URL on load ──────────────────────────────────────────
+  const urlKey = new URLSearchParams(window.location.search).get('course') || 'vedasree-patham';
+  const initialKey = COURSES[urlKey] ? urlKey : 'vedasree-patham';
+  courseEl.value = initialKey;
+  applyCourse(initialKey);
+
+  // ── Course selector change ────────────────────────────────────────────────
+  courseEl.addEventListener('change', function () {
+    applyCourse(this.value);
+  });
+
+  // ── WhatsApp — digits only ────────────────────────────────────────────────
   document.getElementById('lv-whatsapp').addEventListener('input', function () {
     this.value = this.value.replace(/\D/g, '').substring(0, 10);
   });
 
+  // ── Submit ────────────────────────────────────────────────────────────────
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
     errorEl.classList.add('hidden');
@@ -363,19 +478,20 @@
     const whatsapp = document.getElementById('lv-whatsapp').value.trim();
     const district = document.getElementById('lv-district').value.trim();
     const state    = document.getElementById('lv-state').value;
+    const course   = courseEl.value;
 
-    if (!name)                                           return showError('Please enter your full name.');
-    if (!age || age < 5 || age > 100)                   return showError('Please enter a valid age.');
-    if (!whatsapp || !/^\d{10}$/.test(whatsapp))        return showError('Please enter a valid 10-digit WhatsApp number.');
-    if (!district)                                       return showError('Please enter your district.');
-    if (!state)                                          return showError('Please select your state.');
+    if (!name)                                    return showError('Please enter your full name.');
+    if (!age || age < 5 || age > 100)             return showError('Please enter a valid age.');
+    if (!whatsapp || !/^\d{10}$/.test(whatsapp))  return showError('Please enter a valid 10-digit WhatsApp number.');
+    if (!district)                                return showError('Please enter your district.');
+    if (!state)                                   return showError('Please select your state.');
 
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<span class="material-symbols-outlined text-base animate-spin">progress_activity</span> Submitting...';
 
     try {
       const address = document.getElementById('lv-address').value.trim();
-      const params = new URLSearchParams({ name, age, address, district, state, whatsapp });
+      const params = new URLSearchParams({ course, name, age, address, district, state, whatsapp });
       await fetch(SHEET_URL + '?' + params.toString(), { method: 'GET', mode: 'no-cors' });
     } catch (_) {}
 
@@ -384,8 +500,11 @@
     success.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
 
+  // ── Reset ─────────────────────────────────────────────────────────────────
   window.resetForm = function () {
     form.reset();
+    courseEl.value = initialKey;
+    applyCourse(initialKey);
     document.getElementById('lv-state').value = 'Kerala';
     submitBtn.disabled = false;
     submitBtn.innerHTML = '<span class="material-symbols-outlined text-base">send</span> Submit Registration';
