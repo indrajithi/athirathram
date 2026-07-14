@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<link rel="icon" type="image/x-icon" href="favicon.ico"/>
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="description" content="The Story of Shyena — Mathematics and Astronomy Exhibition held in connection with the Kozhikode Athirathram 2026."/>
+<title>The Story of Shyena | Athirathram 2026</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Noto+Serif+Malayalam:wght@400;700&family=Noto+Serif+Devanagari:wght@400;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "surface-dim": "#131313",
+          "surface-container-low": "#1c1b1b",
+          "outline": "#a78b7e",
+          "primary": "#ffb692",
+          "primary-container": "#ff7722",
+          "outline-variant": "#584237",
+          "on-background": "#e5e2e1",
+          "on-primary-fixed": "#341100",
+          "surface-variant": "#353535",
+          "on-surface-variant": "#e0c0b1",
+          "surface-container": "#20201f",
+          "surface": "#131313",
+          "secondary": "#e9c349",
+          "on-surface": "#e5e2e1",
+          "background": "#131313"
+        },
+        fontFamily: {
+          "headline": ["Noto Serif"],
+          "body": ["Manrope"],
+          "label": ["Manrope"]
+        },
+        borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+      },
+    },
+  }
+</script>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    display: inline-block;
+    line-height: 1;
+    vertical-align: middle;
+  }
+  .lang-tab {
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .lang-tab.active {
+    background: #ff7722;
+    border-color: #ff7722;
+    color: #341100;
+    font-weight: 700;
+  }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up { animation: fade-up 0.5s cubic-bezier(0.23,1,0.32,1) both; }
+  .panel-img {
+    min-height: 200px;
+    background: #20201f;
+  }
+</style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-fixed overflow-x-hidden">
+
+<!-- Nav -->
+<header class="sticky top-0 w-full z-50 bg-[#131313]/95 backdrop-blur-lg shadow-[0_4px_30px_rgba(255,119,34,0.05)]">
+<nav class="flex justify-between items-center px-6 md:px-10 py-4 md:py-5 max-w-screen-2xl mx-auto">
+  <a href="index.html" class="text-lg md:text-2xl font-serif font-bold text-[#E9C349] tracking-widest hover:opacity-80 transition-opacity">Athirathram 2026</a>
+  <div class="hidden md:flex gap-8 items-center font-serif text-lg tracking-tight">
+    <a class="text-[#E5E2E1]/80 hover:text-[#FFB692] transition-all" href="index.html">The Yajna</a>
+    <a class="text-[#E5E2E1]/80 hover:text-[#FFB692] transition-all" href="master.html">The Master</a>
+    <a class="text-[#E5E2E1]/80 hover:text-[#FFB692] transition-all" href="learn-veda.html">Vedasree Patham</a>
+    <a class="text-[#E5E2E1]/80 hover:text-[#FFB692] transition-all" href="history.html">History</a>
+    <a class="text-[#FFB692] border-b-2 border-[#E9C349] pb-1" href="shyena.html">Exhibition</a>
+    <a class="text-[#E5E2E1]/80 hover:text-[#FFB692] transition-all" href="support.html">Support</a>
+  </div>
+  <div class="hidden md:flex items-center gap-3">
+    <a href="live.html" class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white px-4 py-2 rounded font-bold text-xs tracking-widest uppercase transition-all"><span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>Live</a>
+    <a href="support.html" class="inline-flex bg-gradient-to-br from-primary to-primary-container text-on-primary-fixed px-5 py-2 rounded font-semibold hover:scale-105 transition-transform text-sm">Donate</a>
+  </div>
+  <button id="menu-toggle" onclick="var m=document.getElementById('mobile-menu');m.classList.toggle('hidden');this.querySelector('.bar1').classList.toggle('rotate-45');this.querySelector('.bar1').classList.toggle('translate-y-2');this.querySelector('.bar2').classList.toggle('opacity-0');this.querySelector('.bar3').classList.toggle('-rotate-45');this.querySelector('.bar3').classList.toggle('-translate-y-2');" class="md:hidden flex flex-col gap-1.5 p-2 focus:outline-none">
+    <span class="bar1 block w-6 h-0.5 bg-[#E9C349] transition-all duration-300"></span>
+    <span class="bar2 block w-6 h-0.5 bg-[#E9C349] transition-all duration-300"></span>
+    <span class="bar3 block w-6 h-0.5 bg-[#E9C349] transition-all duration-300"></span>
+  </button>
+</nav>
+<div id="mobile-menu" class="hidden md:hidden bg-[#1C1B1B] border-t border-[#E9C349]/10 px-6 py-6 flex flex-col gap-5 font-serif text-lg">
+  <a class="text-[#E5E2E1]/80 hover:text-[#FFB692] transition-all border-b border-outline-variant/10 pb-3" href="index.html">The Yajna</a>
+  <a class="text-[#E5E2E1]/80 hover:text-[#FFB692] transition-all border-b border-outline-variant/10 pb-3" href="master.html">The Master</a>
+  <a class="text-[#E5E2E1]/80 hover:text-[#FFB692] transition-all border-b border-outline-variant/10 pb-3" href="learn-veda.html">Vedasree Patham</a>
+  <a class="text-[#E5E2E1]/80 hover:text-[#FFB692] transition-all border-b border-outline-variant/10 pb-3" href="history.html">History</a>
+  <a class="text-[#FFB692] border-b border-[#E9C349]/30 pb-3" href="shyena.html">Exhibition</a>
+  <a class="text-[#E5E2E1]/80 hover:text-[#FFB692] transition-all border-b border-outline-variant/10 pb-3" href="support.html">Support</a>
+  <a href="live.html" class="inline-flex items-center justify-center gap-2 bg-red-600 text-white px-6 py-3 rounded font-bold text-sm tracking-widest uppercase text-center"><span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>Watch Live</a>
+  <a href="support.html" class="bg-gradient-to-br from-primary to-primary-container text-on-primary-fixed px-6 py-3 rounded font-bold text-sm tracking-widest uppercase text-center mt-1">Donate</a>
+</div>
+</header>
+
+<main>
+  <div class="max-w-3xl mx-auto px-6 pt-12 pb-24">
+
+    <!-- Header -->
+    <div class="mb-10 fade-up">
+      <span class="font-label text-xs tracking-[0.35em] uppercase text-secondary block mb-4">Exhibition · Athirathram 2026</span>
+      <h1 class="font-headline text-3xl md:text-5xl text-on-background leading-tight mb-4">The Story of <span class="text-[#E9C349] italic">Shyena</span></h1>
+      <p class="text-on-surface-variant text-base md:text-lg max-w-2xl leading-relaxed">
+        Mathematics and Astronomy Exhibition held in connection with the Kozhikode Athirathram.
+        Shyena, the falcon-shaped fire altar, tells its own story — from the geometry of the
+        Shulbasutras and the theorem known before Pythagoras, to Vedic timekeeping, the 27 Nakshatras,
+        and the lifespan of the universe. Browse all 36 exhibition boards below in your preferred language.
+      </p>
+    </div>
+
+    <!-- Download PDF options -->
+    <div class="mb-8 border border-outline-variant/30 rounded-xl bg-surface-container-low p-5 fade-up">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="material-symbols-outlined text-secondary">download</span>
+        <span class="font-headline text-lg text-on-background">Download the Exhibition as PDF</span>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <a href="pdf/shyena-exhibition-malayalam.pdf" download class="inline-flex items-center gap-2 border border-outline-variant/40 hover:border-primary hover:text-primary text-on-surface-variant px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors">
+          <span class="material-symbols-outlined text-base">picture_as_pdf</span>മലയാളം<span class="text-xs opacity-60 font-normal">21 MB</span>
+        </a>
+        <a href="pdf/shyena-exhibition-english.pdf" download class="inline-flex items-center gap-2 border border-outline-variant/40 hover:border-primary hover:text-primary text-on-surface-variant px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors">
+          <span class="material-symbols-outlined text-base">picture_as_pdf</span>English<span class="text-xs opacity-60 font-normal">10 MB</span>
+        </a>
+        <a href="pdf/shyena-exhibition-hindi.pdf" download class="inline-flex items-center gap-2 border border-outline-variant/40 hover:border-primary hover:text-primary text-on-surface-variant px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors">
+          <span class="material-symbols-outlined text-base">picture_as_pdf</span>हिन्दी<span class="text-xs opacity-60 font-normal">10 MB</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Language tabs -->
+    <div class="flex flex-wrap items-center gap-2 mb-10 sticky top-[72px] md:top-[84px] z-40 bg-[#131313]/95 backdrop-blur-lg py-3 -mx-2 px-2 rounded-xl">
+      <button class="lang-tab px-5 py-2 rounded-full text-sm border border-outline-variant/40 text-on-surface-variant" data-lang="ml">മലയാളം</button>
+      <button class="lang-tab px-5 py-2 rounded-full text-sm border border-outline-variant/40 text-on-surface-variant" data-lang="en">English</button>
+      <button class="lang-tab px-5 py-2 rounded-full text-sm border border-outline-variant/40 text-on-surface-variant" data-lang="hi">हिन्दी</button>
+    </div>
+
+    <!-- Panels -->
+    <div id="panels" class="flex flex-col gap-10"></div>
+
+  </div>
+</main>
+
+<!-- Lightbox -->
+<div id="lightbox" class="hidden fixed inset-0 z-[100] bg-black/90 items-center justify-center p-4 cursor-zoom-out">
+  <button id="lightbox-close" class="absolute top-4 right-4 text-white/80 hover:text-white z-10 p-2" aria-label="Close">
+    <span class="material-symbols-outlined text-3xl">close</span>
+  </button>
+  <img id="lightbox-img" src="" alt="" class="max-h-full max-w-full object-contain rounded-lg shadow-2xl"/>
+</div>
+
+<!-- Footer -->
+<footer class="bg-[#1C1B1B] w-full pt-12 md:pt-20 pb-12">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 text-center md:text-left">
+    <div>
+      <div class="text-xl font-headline text-[#FFB692] mb-6">Athirathram 2026</div>
+      <p class="font-body text-sm tracking-wide leading-relaxed text-[#E5E2E1]/60 mb-6">
+        Dedicated to the revival and preservation of ancient Vedic wisdom and the upliftment of humanity through sacred rituals.
+      </p>
+    </div>
+    <div class="flex flex-col gap-4">
+      <h4 class="text-[#E9C349] font-semibold mb-2">Quick Links</h4>
+      <a class="text-[#E5E2E1]/60 hover:text-[#FFB692] transition-colors text-sm font-label" href="index.html">The Yajna</a>
+      <a class="text-[#E5E2E1]/60 hover:text-[#FFB692] transition-colors text-sm font-label" href="master.html">The Master</a>
+      <a class="text-[#E5E2E1]/60 hover:text-[#FFB692] transition-colors text-sm font-label" href="learn-veda.html">Vedasree Patham</a>
+      <a class="text-[#E5E2E1]/60 hover:text-[#FFB692] transition-colors text-sm font-label" href="shyena.html">The Story of Shyena</a>
+      <a class="text-[#E5E2E1]/60 hover:text-[#FFB692] transition-colors text-sm font-label" href="support.html">Support & Donate</a>
+    </div>
+    <div class="flex flex-col gap-4">
+      <h4 class="text-[#E9C349] font-semibold mb-2">Contact Us</h4>
+      <div class="flex items-center gap-3 justify-center md:justify-start text-[#E5E2E1]/60 text-sm">
+        <span class="material-symbols-outlined text-sm">mail</span>info@kvrf.org
+      </div>
+      <div class="flex items-center gap-3 justify-center md:justify-start text-[#E5E2E1]/60 text-sm">
+        <span class="material-symbols-outlined text-sm">location_on</span>Kerala, India
+      </div>
+      <a href="tel:+919745915151" class="flex items-center gap-3 justify-center md:justify-start text-[#E5E2E1]/60 hover:text-[#FFB692] transition-colors text-sm">
+        <span class="material-symbols-outlined text-sm text-[#FFB692]">call</span>+91 97459 15151
+      </a>
+      <a href="tel:+917907080682" class="flex items-center gap-3 justify-center md:justify-start text-[#E5E2E1]/60 hover:text-[#FFB692] transition-colors text-sm">
+        <span class="material-symbols-outlined text-sm text-[#FFB692]">call</span>+91 79070 80682
+      </a>
+    </div>
+  </div>
+  <div class="mt-10 md:mt-16 pt-8 border-t border-outline-variant/10 text-center">
+    <p class="font-body text-sm tracking-wide text-[#E5E2E1]/60">© 2026 Kasyapa Veda Research Foundation. All Rights Sacred.</p>
+  </div>
+</footer>
+
+<script>
+// ─── Exhibition boards ───────────────────────────────────────────────────────
+const TOTAL_PANELS = 36;
+
+// English board titles, used as alt text / captions
+const TITLES = [
+  "The Story of Shyena — Mathematics and Astronomy Exhibition",
+  "The Story of Shyena",
+  "My Body — 1,000 bricks in five layers",
+  "How I evolved into this form",
+  "Lets Start From Units",
+  "Constructing the fundamental form — the square",
+  "How The Square Came To Be — the Fish Figure (Matsya Chitrana)",
+  "Before Pythagoras — Bhujakotikarna Nyaya",
+  "My Place — the Mahavedi",
+  "Finding East",
+  "3 Sacred Fires — Same Area",
+  "The Way Of Shape Transformation",
+  "Sutra Of √2",
+  "The Veda That Taught How To Count",
+  "The World Of Large Numbers",
+  "Chaturasra Shyena — the square falcon",
+  "Now, I... — constraints of my true form",
+  "Other Chitis — Rathachakra and Kurma",
+  "I am Growing — from 7½ to 101½ sq. Purusha",
+  "Why did they grow me?",
+  "Know the Savana Samvatsara",
+  "Intercalation",
+  "Three Types Of Bricks",
+  "I am Samvatsara...",
+  "Veda and Tithi",
+  "Short Fall In Lunar Year",
+  "The Secret Of My Growth",
+  "An astronomical secret behind 7½",
+  "27 Nakshatras",
+  "Nakshatra Secrets in Me",
+  "You Are In Me Too!",
+  "Saptarshi And Me",
+  "From astronomy into cosmology",
+  "Age of The Nakshatras",
+  "Ahoratras of Prajapati",
+  "I'm the Universe"
+];
+
+const panelsEl = document.getElementById('panels');
+let currentLang = localStorage.getItem('shyena-lang') || 'en';
+
+function imgSrc(lang, i) {
+  return 'images/exhibition/' + lang + '-' + String(i).padStart(2, '0') + '.jpg';
+}
+
+function buildPanels() {
+  const frag = document.createDocumentFragment();
+  for (let i = 1; i <= TOTAL_PANELS; i++) {
+    const wrap = document.createElement('figure');
+    wrap.className = 'fade-up';
+    wrap.innerHTML =
+      '<div class="flex items-center gap-3 mb-3">' +
+        '<span class="font-label text-xs tracking-[0.3em] uppercase text-secondary">Board ' + i + ' of ' + TOTAL_PANELS + '</span>' +
+        '<div class="h-px flex-1 bg-outline-variant/20"></div>' +
+      '</div>' +
+      '<img class="panel-img w-full rounded-xl border border-outline-variant/20 shadow-lg cursor-zoom-in" loading="lazy" ' +
+        'data-index="' + i + '" src="' + imgSrc(currentLang, i) + '" alt="' + TITLES[i - 1].replace(/"/g, '&quot;') + '"/>';
+    frag.appendChild(wrap);
+  }
+  panelsEl.appendChild(frag);
+}
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('shyena-lang', lang);
+  document.querySelectorAll('.lang-tab').forEach(function (t) {
+    t.classList.toggle('active', t.dataset.lang === lang);
+  });
+  document.querySelectorAll('#panels img').forEach(function (img) {
+    img.src = imgSrc(lang, parseInt(img.dataset.index, 10));
+  });
+}
+
+document.querySelectorAll('.lang-tab').forEach(function (tab) {
+  tab.addEventListener('click', function () { setLang(tab.dataset.lang); });
+});
+
+// ─── Lightbox ────────────────────────────────────────────────────────────────
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+
+panelsEl.addEventListener('click', function (e) {
+  if (e.target.tagName !== 'IMG') return;
+  lightboxImg.src = e.target.src;
+  lightboxImg.alt = e.target.alt;
+  lightbox.classList.remove('hidden');
+  lightbox.classList.add('flex');
+  document.body.style.overflow = 'hidden';
+});
+
+function closeLightbox() {
+  lightbox.classList.add('hidden');
+  lightbox.classList.remove('flex');
+  document.body.style.overflow = '';
+}
+lightbox.addEventListener('click', closeLightbox);
+document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLightbox(); });
+
+// ─── Init ────────────────────────────────────────────────────────────────────
+buildPanels();
+setLang(currentLang);
+</script>
+
+</body>
+</html>
