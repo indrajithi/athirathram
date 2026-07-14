@@ -1,0 +1,9 @@
+# Cloudflare Pages asset caching rules
+
+# Exhibition PDFs — final documents, cache aggressively
+/pdf/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Exhibition board images — stable renders, cache for a week
+/images/exhibition/*
+  Cache-Control: public, max-age=604800
